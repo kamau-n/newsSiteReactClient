@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Create() {
   const [content, setContent] = useState("");
@@ -58,6 +59,9 @@ function Create() {
           </div>
         </form>
       </div>
+      <Link to="/blogs" className="text-center text-xl text-blue-800">
+        Got to news
+      </Link>
     </div>
   );
 }

@@ -4,16 +4,20 @@ import axios from "axios";
 import { data } from "autoprefixer";
 import {} from "react-icons";
 import logo from "./icon.png";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Blogs() {
+export default function Blogs(route) {
   const url = "http://localhost:8000/news";
   const [data, setData] = useState([]);
   const [blog_id, setBlog] = useState();
+
   //like function
 
   const like = (event) => {
     event.preventDefault();
   };
+
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get(url)
@@ -33,8 +37,11 @@ export default function Blogs() {
 
         <div className="">
           <img src={logo} alt="no image" className="h-20 w-20" />
-          <h2 className="text-2xl font-black">NewApp</h2>
+          <h2 className="text-2xl font-black">MoloNews</h2>
         </div>
+        <Link to="/" className="text-center text-xl text-blue-800">
+          create a news article
+        </Link>
         <h1 className="text-blue-800 text-4xl ">Get the latest News</h1>
         <button className=" h-10 p-2 text-white text-center bg-blue-600 rounded-xl">
           Subscribe
@@ -52,9 +59,8 @@ export default function Blogs() {
                   onSubmit={(event) => {
                     event.preventDefault();
                     axios
-                      .post("http://localhost:5000/blog/like", {
-                        blog_id: blog_id,
-                        user_id: 3,
+                      .post("http://localhost:8000/news/like", {
+                        news_id: news_id,
                       })
                       .then((results) => {
                         console.log(results.data);
@@ -70,7 +76,12 @@ export default function Blogs() {
                 </form>
               </div>
               <div>
-                <a href="/comments">Comments</a>
+                <button
+                  onClick={() => {
+                    navigate("/Comments", { state: { news_id: news.id } });
+                  }}>
+                  comment
+                </button>
               </div>
             </div>
           </div>
