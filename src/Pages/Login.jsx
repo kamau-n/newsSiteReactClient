@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -16,38 +17,41 @@ export default function Login() {
       .catch((error) => console.log(error));
   };
   return (
-    <div>
-      <div className="m-auto p-10">
+    <div className="bg-green-700 p-5 ">
+      <div className="mx-auto p-10 w-1/4 bg-white my-10">
         <form onSubmit={handleSubmit}>
           <div className="text-center   m-10">
             <input
-              className="p-2 text-center border-2  border-black "
+              className="p-3 text-center border-1 bg-slate-200 border-black "
               type="text"
               value={userEmail}
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              placeholder="Enter the title of the blog"
+              placeholder="Enter your email address"
             />
           </div>
           <div className="text-center  m-10 ">
             <input
               type="text"
-              className="p-2 text-center border-2 border-black"
+              className="p-3 text-center border-1 border-black bg-slate-200"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              placeholder="Enter the  content the blog"
+              placeholder="Enter your password"
             />
           </div>
 
           <div className="text-center  m-10">
-            <button className="border-2 px-10 py-5  text-xl border-blue-300 bg-blue-500 rounded-2xl">
+            <button className="border-1 px-10 py-3 w-full text-xl border-blue-300 bg-green-500 ">
               Login
             </button>
           </div>
         </form>
+        <div className="text-center">
+          <Link to="/register">Create and account</Link>
+        </div>
       </div>
     </div>
   );

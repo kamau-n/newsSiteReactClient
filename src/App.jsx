@@ -7,6 +7,7 @@ import Create from "./Pages/Create";
 import Blogs from "./Pages/Blogs";
 import Comments from "./Pages/Comments";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route element={<Blogs />} path="/blogs" />
           <Route element={<Comments />} path="/comments" />
           <Route element={<Login />} path="/login" />
+          <Route element={<Register />} path="/register" />
         </Routes>
       </BrowserRouter>
     </>
