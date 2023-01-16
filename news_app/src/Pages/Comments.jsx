@@ -4,8 +4,8 @@ import axios from "axios";
 import { Link, Route, useNavigate, useLocation } from "react-router-dom";
 import { data } from "autoprefixer";
 import { useEffect } from "react";
-//import { toast,ToastContainer } from "react-toastify";
-//import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Comments() {
   const location = useLocation();
@@ -13,8 +13,6 @@ export default function Comments() {
   const [data, setData] = useState([]);
 
   const id = location.state.news_id;
-
-  //toast.configure();
 
   // a part that display other available comments
 
@@ -57,8 +55,11 @@ export default function Comments() {
           userId: 2,
         })
         .then((res) => {
-          window.location.reload(true);
-          //   toast("Commented Successfully");
+          // window.location.reload(true);
+          toast.success("Commented Successfully", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          <ToastContainer />;
         })
         .catch((err) => {
           alert("there was an error");
